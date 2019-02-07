@@ -1,14 +1,17 @@
 import sqlite3
 import nfctoid
 
-def registration():
+ask = input("자람 출석부에 등록하시겠습니까? y/n")
+while True:
+    if ask == "N" | "n":
+        break
+    if ask == "Y" | "y":
+        registration()            
+
+def registration():    
     conn = sqlite3.connect("memberlist.db")
     cur = conn.cursor()
-    create_table = """CREATE TABLE IF NOT EXISTS MEMBERS(
-        CARD TEXT PRIMARY KEY NOT NULL,
-        NAME TEXT NOT NULL,
-        ATTNUM INTEGER NOT NULL)"""
-    cur.execute(create_table)
+    
     name = input("등록하실 이름을 입력하세요 : ")
     while True:
         if name == "":
@@ -33,5 +36,3 @@ def registration():
         cur.execute(add_info, (card, name, 0))
         conn.commit()
         conn.close()
-
-registration()
