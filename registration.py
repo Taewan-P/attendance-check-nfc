@@ -24,17 +24,14 @@ def registration():
     card_rows = cur.fetchall()
     print(card_rows)
 
-    # for i in card_rows:
-    #     if card == i:
-    #         print("이미 등록된 사용자입니다!\n등록을 종료합니다.")
-    #         conn.close() 
-    #         return None
-        
-
-    add_info = "INSERT INTO MEMBERS(CARD, NAME, ATTNUM) VALUES (?, ?, ?)"
-    
-    cur.execute(add_info, (card, name, 0))
-    conn.commit()
-    conn.close()
+    if card_rows[0][0] == 1:
+        print("이미 등록된 사용자입니다!\n등록을 종료합니다.")
+        conn.close()
+    else:
+        add_info = "INSERT INTO MEMBERS(CARD, NAME, ATTNUM) VALUES (?, ?, ?)"
+            
+        cur.execute(add_info, (card, name, 0))
+        conn.commit()
+        conn.close()
 
 registration()
