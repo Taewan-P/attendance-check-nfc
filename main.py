@@ -1,8 +1,9 @@
 import nfctoid
+import atdchk
 import sqlite3
 
-a = nfctoid.idtest()
-print(a)
+# a = nfctoid.idtest()
+# print(a)
 
 def main():
     conn = sqlite3.connect("memberlist.db")
@@ -12,8 +13,9 @@ def main():
         NAME TEXT NOT NULL,
         ATT INTEGER NOT NULL)"""
     cur.execute(create_table)
+    conn.close()
     
     while(True):
-        print("자람웹실 출석체크 시스템")
-
-    conn.close()
+        atdchk.atdchk()
+        
+main()

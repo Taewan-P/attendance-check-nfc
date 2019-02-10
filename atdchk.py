@@ -6,7 +6,8 @@ def atdchk():
     conn = sqlite3.connect("memberlist.db")
     cur = conn.cursor()
 
-    target_card = nfctoid.scan_id
+    target_card = nfctoid.scan_id()
+    print(target_card + "가 인식되었습니다.")
 
     cur.execute("select count(card) from members where card = '" + target_card + "'")
     card_rows = cur.fetchall()
@@ -15,5 +16,5 @@ def atdchk():
         att_rows = cur.fetchall()
         attnum = att_rows[0][0]
         cur.execute("update members set att = ? where card = ?", (attnum+1, target_card))
-    # else:
-    #     registration
+    else:
+        registration.registration()
