@@ -16,5 +16,6 @@ def atdchk():
         att_rows = cur.fetchall()
         attnum = att_rows[0][0]
         cur.execute("update members set att = ? where card = ?", (attnum+1, target_card))
+        conn.commit()
     else:
         registration.registration()
