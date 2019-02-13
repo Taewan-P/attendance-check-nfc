@@ -19,7 +19,7 @@ def registration():
             print("등록하실 카드를 찍어 주세요.")
             card = nfctoid.scan_id()
 
-            ccheck_sql = "select count(card) from members where card = '" + card + "'"
+            ccheck_sql = "SELECT COUNT(CARD) FROM MEMBERS WHERE CARD = '" + card + "'"
             cur.execute(ccheck_sql)
             card_rows = cur.fetchall()
 
@@ -28,9 +28,9 @@ def registration():
                 conn.close()
                 break
             else:
-                add_info = "INSERT INTO MEMBERS(CARD, NAME, ATT) VALUES (?, ?, ?)"
+                add_info = "INSERT INTO MEMBERS(CARD, NAME, ATT, LASTCHECKED) VALUES (?, ?, ?, DATETIME('NOW','LOCALTIME'))"
             
-                cur.execute(add_info, (card, name, 0))
+                cur.execute(add_info, (card, name, 1))
                 conn.commit()
                 conn.close()
                 break
