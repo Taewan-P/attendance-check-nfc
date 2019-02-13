@@ -18,4 +18,4 @@ def atdchk():
         cur.execute("UPDATE MEMBERS SET ATT = ?, LASTCHECKED = DATETIME('NOW','LOCALTIME') WHERE CARD = ?", (attnum+1, target_card))
         conn.commit()
     else:
-        registration.registration()
+        registration.registration(target_card)
