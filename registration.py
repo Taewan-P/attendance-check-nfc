@@ -19,7 +19,6 @@ def registration(card_id):
             card = card_id
             ccheck_sql = "select count(card) from members where card = '" + card + "'"
             cur.execute(ccheck_sql)
-            card_rows = cur.fetchall()
             add_info = "INSERT INTO MEMBERS(CARD, NAME, ATT) VALUES (?, ?, ?)"
         
             cur.execute(add_info, (card, name, 1))
