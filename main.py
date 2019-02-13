@@ -11,7 +11,7 @@ def main():
     create_table = """CREATE TABLE IF NOT EXISTS MEMBERS(
         CARD TEXT PRIMARY KEY NOT NULL,
         NAME TEXT NOT NULL,
-        ATT INTEGER NOT NULL,
+        ATD INTEGER NOT NULL,
         LASTCHECKED DATE NOT NULL)"""
     cur.execute(create_table)
     conn.close()

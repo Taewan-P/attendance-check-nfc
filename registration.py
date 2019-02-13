@@ -17,11 +17,10 @@ def registration(card_id):
                     break
 
             card = card_id
-            ccheck_sql = "select count(card) from members where card = '" + card + "'"
+            ccheck_sql = "SELECT COUNT(CARD) FROM MEMBERS WHERE CARD = '" + card + "'"
             cur.execute(ccheck_sql)
-            card_rows = cur.fetchall()
-            add_info = "INSERT INTO MEMBERS(CARD, NAME, ATT) VALUES (?, ?, ?)"
-        
+            add_info = "INSERT INTO MEMBERS(CARD, NAME, ATD, LASTCHECKED) VALUES (?, ?, ?, DATETIME('NOW','LOCALTIME'))"
+
             cur.execute(add_info, (card, name, 1))
             conn.commit()
             conn.close()
