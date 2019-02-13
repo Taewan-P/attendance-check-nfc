@@ -12,10 +12,10 @@ def atdchk():
     cur.execute("SELECT COUNT(CARD) FROM MEMBERS WHERE CARD = '" + target_card + "'")
     card_rows = cur.fetchall()
     if card_rows[0][0] == 1:
-        cur.execute("SELECT ATT FROM MEMBERS WHERE CARD = '" + target_card + "'")
-        att_rows = cur.fetchall()
-        attnum = att_rows[0][0]
-        cur.execute("UPDATE MEMBERS SET ATT = ?, LASTCHECKED = DATETIME('NOW','LOCALTIME') WHERE CARD = ?", (attnum+1, target_card))
+        cur.execute("SELECT ATD FROM MEMBERS WHERE CARD = '" + target_card + "'")
+        atd_rows = cur.fetchall()
+        atdnum = atd_rows[0][0]
+        cur.execute("UPDATE MEMBERS SET ATD = ?, LASTCHECKED = DATETIME('NOW','LOCALTIME') WHERE CARD = ?", (atdnum+1, target_card))
         conn.commit()
     else:
-        registration.registration()
+        registration.registration(target_card)
