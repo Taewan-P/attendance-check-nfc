@@ -2,8 +2,8 @@ import sqlite3
 import nfctoid            
 
 def registration(card_id):
-    ask = input("자람 출석부에 등록하시겠습니까? y/n\n")
     while True:
+        ask = input("자람 출석부에 등록하시겠습니까? y/n\n")
         if ask == "N" or ask == "n":
             break
         elif ask == "Y" or ask == "y":
@@ -25,4 +25,6 @@ def registration(card_id):
             conn.commit()
             conn.close()
             break
+        else:
+            continue
             
