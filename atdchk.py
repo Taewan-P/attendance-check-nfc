@@ -35,7 +35,7 @@ def atdchk():
             print("오늘은 " + str(year_now) + "년 " + str(month_now) +"월 " + str(day_now) + "일입니다.")
             print("마지막으로 출석한 날짜는 " + str(year_checked) + "년 " + str(month_checked) +"월 " + str(day_checked) + "일입니다.\n")
         else:
-            cur.execute("UPDATE MEMBERS SET ATT = ?, LASTCHECKED = DATETIME('NOW','LOCALTIME') WHERE CARD = ?", (attnum+1, target_card))
+            cur.execute("UPDATE MEMBERS SET ATD = ?, LASTCHECKED = DATETIME('NOW','LOCALTIME') WHERE CARD = ?", (attnum+1, target_card))
             conn.commit()
             print("출석이 완료되었습니다. 감사합니다!")
     else:
