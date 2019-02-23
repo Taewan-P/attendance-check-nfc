@@ -1,5 +1,6 @@
 import sqlite3
-import nfctoid
+#import nfctoid
+import nfctoid_test
 import registration
 import datetime
 
@@ -7,7 +8,8 @@ def atdchk():
     conn = sqlite3.connect("memberlist.db")
     cur = conn.cursor()
 
-    target_card = nfctoid.scan_id()
+    #target_card = nfctoid.scan_id()
+    target_card = nfctoid_test.scan_id()
     print(target_card + "가 인식되었습니다.")
 
     cur.execute("SELECT COUNT(CARD) FROM MEMBERS WHERE CARD = '" + target_card + "'")

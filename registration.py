@@ -1,5 +1,4 @@
-import sqlite3
-import nfctoid            
+import sqlite3          
 
 def registration(card_id):
     while True:

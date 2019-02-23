@@ -1,4 +1,5 @@
-import nfctoid
+#import nfctoid
+import nfctoid_test
 import atdchk
 import sqlite3
 
