@@ -1,8 +1,10 @@
 import sqlite3
 #import nfctoid
-import nfctoid_test
+import nfctoid_test #for test code
 import registration
 import datetime
+from random import randint #for test code
+
 
 def atdchk():
     conn = sqlite3.connect("memberlist.db")
@@ -31,6 +33,8 @@ def atdchk():
         year_checked = converted_date.year
         month_checked = converted_date.month
         day_checked = converted_date.day
+        if randint(0,2) == 0: #for test code
+            day_now = day_checked+1
 
         cur.execute("SELECT NAME FROM MEMBERS WHERE CARD = '" + target_card + "'")
         name = cur.fetchall()
@@ -43,5 +47,6 @@ def atdchk():
             cur.execute("UPDATE MEMBERS SET ATD = ?, LASTCHECKED = DATETIME('NOW','LOCALTIME') WHERE CARD = ?", (atdnum+1, target_card))
             conn.commit()
             print(name[0][0] + "님, 출석이 완료되었습니다. 감사합니다!")
+            print("오늘은 " + str(year_now) + "년 " + str(month_now) +"월 " + str(day_now) + "일입니다.") #for test code
     else:
         registration.registration(target_card)

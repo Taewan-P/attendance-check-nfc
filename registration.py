@@ -25,6 +25,7 @@ def registration(card_id):
             cur.execute(add_info, (card, name, 1))
             conn.commit()
             conn.close()
+            print('첫번째 출석을 환영합니다 ' + name + '님!')
             break
         else:
             continue
